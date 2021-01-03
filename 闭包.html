@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function createCache() {
+            let data = {};
+            return {
+                set(key, val) {
+                    data[key] = val
+                },
+                get(key) {
+                    return data[key]
+                }
+            }
+        }
+        let test = createCache();
+        test.set(name, 'ssz');
+        console.log(test.get(name));
+        console.log(test.data);
+    </script>
+</body>
+
+</html>

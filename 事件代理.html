@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 普通事件 -->
+    <button class="btn1">激活</button>
+    <!-- 代理事件 -->
+    <div class="div2">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <button>取消</button>
+    </div>
+    <script>
+        const btn1 = document.querySelector('.btn1');
+        const div2 = document.querySelector('.div2')
+
+        function bindEvent(elem, type, selector, fn) {
+            if (fn == null) {
+                fn = selector;
+                selector = null
+            }
+            elem.addEventListener(type, event => {
+                const target = event.target;
+                if (selector) {
+                    //   代理
+                    if (target.matches(selector)) {
+                        fn.call(target, event)
+                    }
+                } else {
+                    // 普通
+                    fn.call(target, event)
+                }
+            })
+        }
+
+        bindEvent(btn1, 'click', function (event) {
+            console.log(this.innerHTML);
+        })
+        bindEvent(div2, 'click', 'a', function (event) {
+            const target = event.target;
+
+            alert(target.innerHTML)
+
+        })
+    </script>
+</body>
+
+</html>

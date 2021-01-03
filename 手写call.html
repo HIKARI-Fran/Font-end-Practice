@@ -1,0 +1,32 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-28 16:57:55
+ * @LastEditTime: 2020-12-29 10:39:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \前端面试题练习\手写call.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.bind1 = function () {
+            let args = Array.prototype.slice.call(arguments);
+            let t = args.shift();
+            const self = this;
+            return function () {
+                return self.apply(t, args)
+            }
+
+        }
+    </script>
+</body>
+
+</html>

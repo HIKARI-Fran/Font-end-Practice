@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一道练习题
+        async function async1() {
+            console.log('async1 start');
+            await async2()
+            console.log('async1 end');
+        }
+        async function async2() {
+            console.log('async2');
+        }
+        console.log('script start');
+        setTimeout(function () {
+            console.log('setTimeout');
+        }, 0)
+        async1()
+        new Promise(function (resolve) {
+            console.log('promise1');
+            resolve()
+        }).then(function () {
+            console.log('promise2');
+        })
+        console.log('script end');
+
+        // 第二道练习题
+        // async function fn1() {
+        //     console.log(3)
+        //     await fn2()
+        //     //异步
+        //     console.log(4)
+        // }
+
+        // async function fn2() {
+        //     console.log(5)
+        //     await fn3()
+        //     // 异步
+        //     console.log(6)
+        // }
+
+        // async function fn3() {
+        //     console.log(7)
+        // }
+
+        // console.log(1)
+        // fn1()
+        // console.log(2)
+        // fn2()
+    </script>
+</body>
+
+</html>

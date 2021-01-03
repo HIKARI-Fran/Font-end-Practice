@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>我是文字1</p>
+    <p>我是文字2</p>
+    <p>我是文字3</p>
+    <script>
+        class JQuery {
+            constructor(selector) {
+                let result = document.querySelectorAll(selector);
+                let length = result.length;
+
+
+                this.selector = selector;
+                this.length = length;
+                for (let i = 0; i < this.length; i++) {
+                    this[i] = result[i]
+                }
+            }
+            get(index) {
+                return this[index]
+            }
+            each(fn) {
+                for (let i = 0; i < this.length; i++) {
+                    let elem = this[i];
+                    fn(elem)
+                }
+
+            }
+            on(type, fn) {
+                this.each(elem => {
+                    elem.addEventListener(type, fn, false)
+                })
+            }
+        }
+        const $p = new JQuery('p');
+        console.log($p);
+        console.log($p.get(0));
+        $p.on('click', () => {
+            alert('11')
+        })
+    </script>
+</body>
+
+</html>
