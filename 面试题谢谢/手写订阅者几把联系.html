@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class EventEmitter {
+            constructor() {
+                this.events = {}
+            }
+            on(eventName, callback) {
+                if (!this.events[eventName]) {
+                    this.events[eventName] = [callback]
+                } else {
+                    this.events[eventName].push(callback)
+                }
+
+            }
+            emit(eventName) {
+                this.events[eventName] && this.events[eventName].forEach(cb => cb())
+            }
+            off(eventName, callback) {
+                if (this.events[eventName]) {
+                    this.events[eventName] = this.events[eventName].filter(cb => cb !== callback)
+                }
+            }
+            once(eventName, callback) {
+                let fn = () => {
+                    callback()
+                    this.off(eventName, fn)
+                }
+                this.on(eventName, fn)
+            }
+        }
+        let em = new EventEmitter();
+        em.on('work', function () {
+            console.log('im working');
+        })
+        em.once('love', function () {
+            console.log('i love u');
+        })
+        em.on('make', function () {
+            console.log('i make money');
+        })
+        let workTime = 0;
+        let timer = setInterval(() => {
+            workTime++
+            em.emit('work')
+            em.off('make')
+            em.emit('love')
+            if (workTime === 5) {
+                console.log('i want to have a rest');
+                clearInterval(timer)
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

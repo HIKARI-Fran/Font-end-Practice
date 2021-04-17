@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.selectionSort = function () {
+            for (let i = 0; i < this.length; i++) {
+                let min = this[i];
+                for (let j = i + 1; j < this.length - 1 - i; j++) {
+
+                    if (this[j] < this[j + 1]) {
+                        min = this[j + 1]
+                    }
+
+                }
+                let temp = this[this.length - 1 - i];
+                this[this.length - 1 - i] = this[i];
+                this[i] = temp
+            }
+            return this
+        }
+        let arr = [5, 4, 3, 2, 1]
+        console.log(arr.selectSort());
+    </script>
+</body>
+
+</html>

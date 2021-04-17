@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isObject(obj) {
+            return typeof obj === 'object' && typeof obj !== null
+
+        }
+        Object.defineProperty(Object, 'congeal', {
+            value: function (obj) {
+                for (let i in obj) {
+                    if (obj.hasOwnProperty(i)) {
+                        if (isObject(obj[i])) {
+                            Object.congeal(obj[i])
+                        }
+                        Object.defineProperty(obj, i, {
+                            writable: false
+                        })
+                    }
+                }
+                Object.seal(obj)
+            }
+        })
+        let obj1 = {
+            a: 100,
+            b: {
+                x: 10,
+                y: 20
+            }
+        }
+        let obj2 = 2;
+        Object.congeal(obj1)
+        console.log(obj1);
+        console.log(obj1.b.x = 200);
+        console.log(obj1);
+    </script>
+</body>
+
+</html>

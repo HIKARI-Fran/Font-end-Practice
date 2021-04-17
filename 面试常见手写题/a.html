@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        setTimeout(function () {
+            console.log('6')
+        }, 0)
+
+        requestAnimationFrame(function () {
+            console.log('5')
+        })
+
+        setTimeout(function () {
+            console.log('7')
+        }, 0)
+
+        new Promise(function executor(resolve) {
+            console.log('1')
+            resolve()
+            console.log('2')
+        }).then(function () {
+            console.log('4')
+        })
+
+        console.log('3')
+    </script>
+</body>
+
+</html>

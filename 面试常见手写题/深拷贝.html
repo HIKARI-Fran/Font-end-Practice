@@ -33,10 +33,11 @@
                 result = {}
             }
             for (let key in obj) {
-                result[key] = deepClone(obj[key])
+                if (obj.hasOwnProperty(key)) {
+                    result[key] = deepClone(obj[key])
+                }
             }
             return result
-
         }
         const obj2 = deepClone(obj1);
         obj2.name = "郭嘉宇"

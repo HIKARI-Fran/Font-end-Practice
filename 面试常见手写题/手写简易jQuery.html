@@ -15,36 +15,33 @@
         class JQuery {
             constructor(selector) {
                 let result = document.querySelectorAll(selector);
-                let length = result.length;
-
-
-                this.selector = selector;
-                this.length = length;
+                this.length = result.length;
                 for (let i = 0; i < this.length; i++) {
                     this[i] = result[i]
                 }
+
             }
-            get(index) {
-                return this[index]
+            get(i) {
+                return this[i]
             }
             each(fn) {
                 for (let i = 0; i < this.length; i++) {
-                    let elem = this[i];
+                    const elem = this[i];
                     fn(elem)
                 }
-
             }
             on(type, fn) {
-                this.each(elem => {
+                return this.each(elem => {
                     elem.addEventListener(type, fn, false)
                 })
             }
         }
-        const $p = new JQuery('p');
-        console.log($p);
-        console.log($p.get(0));
-        $p.on('click', () => {
-            alert('11')
+        let p1 = new JQuery('p')
+
+        console.log(p1);
+        console.log(p1.get(1));
+        p1.on('click', () => {
+            alert(123)
         })
     </script>
 </body>

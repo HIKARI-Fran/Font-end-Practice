@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-width: 550px;
+        }
+
+        .head {
+            height: 40px;
+            background-color: red;
+        }
+
+        .middle {
+            box-sizing: border-box;
+            width: 100%;
+            padding-left: 150px;
+            padding-right: 200px;
+        }
+
+        .center {
+            height: 100px;
+            background-color: aliceblue;
+            width: 100%;
+        }
+
+        .left {
+            position: absolute;
+            left: 0;
+            height: 100px;
+            background-color: aqua;
+            width: 150px;
+
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .right {
+            height: 100px;
+            background-color: yellow;
+            width: 200px;
+            margin-right: -200px;
+        }
+
+        .footer {
+            height: 40px;
+            background-color: red;
+        }
+
+        .clearfix {
+            display: table;
+            content: '';
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head"> 我是头部</div>
+    <div class="middle clearfix">
+        <div class="center fl">我是中间</div>
+        <div class="left fl">我是左边</div>
+        <div class="right fl">我是右边</div>
+    </div>
+    <div class="footer">我是底部</div>
+</body>
+
+</html>

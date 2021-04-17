@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class='input1'>
+    <script>
+        function debounce(fn, delay = 500) {
+            let timer = null;
+            return (...args) => {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(() => {
+                    fn(...args)
+                }, delay)
+            }
+        }
+        let userInput = document.querySelector('input');
+        userInput.addEventListener('keyup', debounce(() => {
+            console.log(userInput.value);
+        }, 1000), true)
+    </script>
+</body>
+
+</html>

@@ -34,16 +34,14 @@
                 fn = selector;
                 selector = null
             }
-            elem.addEventListener(type, event => {
-                const target = event.target;
+            elem.addEventListener(type, function (e) {
+                let target = e.target;
                 if (selector) {
-                    //   代理
                     if (target.matches(selector)) {
-                        fn.call(target, event)
+                        fn.call(target, e)
                     }
                 } else {
-                    // 普通
-                    fn.call(target, event)
+                    fn.call(target, e)
                 }
             })
         }

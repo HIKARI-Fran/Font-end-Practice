@@ -13,17 +13,17 @@
             let data = {};
             return {
                 set(key, val) {
-                    data[key] = val
+                    this[key] = val
                 },
                 get(key) {
-                    return data[key]
+                    return this[key]
                 }
             }
         }
-        let test = createCache();
-        test.set(name, 'ssz');
-        console.log(test.get(name));
-        console.log(test.data);
+        let test = new createCache();
+        test.set("name", 'ssz')
+
+        console.log(test.get('name'));
     </script>
 </body>
 
