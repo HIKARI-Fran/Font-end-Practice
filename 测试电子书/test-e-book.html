@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔盆销饭浴届碰弹燥镰犯稻消晚称违歌纪宿逮隔
+        <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+        This is just a of text.
+        This is just a line of text
+        This is just a line of text.
+        This is just a line of text.
+        <table>
+            <tbody>
+                <tr>
+                    <th>A</th>
+                    <td>A value</td>
+                </tr>
+                <tr>
+                    <th>B</th>
+                    <td>B value</td>
+                </tr>
+            </tbody>
+        </table>
+        This is just a line of text.
+    </div>
+
+    <script>
+        // walks the child elements of a dom element and saves textnodes to the textNodes array
+        const findTextNodesFlat = function (node, textNodes) {
+            node = node.firstChild;
+            while (node) {
+                if (node.nodeType == Node.TEXT_NODE)
+                    textNodes.push(node);
+
+                node = node.nextSibling;
+            }
+        };
+        // walks the dom element recursively and saves textnodes to the textNodes array
+        const findTextNodesTree = function (node, textNodes) {
+            if (node.nodeType == Node.TEXT_NODE)
+                textNodes.push(node);
+
+            node = node.firstChild;
+            while (node) {
+                findTextNodes(node, textNodes);
+                node = node.nextSibling;
+            }
+        };
+        // wraps the textNodes elements with <p></p>
+        const wrapTextNodes = function (textNodes) {
+            for (let node of textNodes) {
+                let parentNode = node.parentNode;
+                let wrapper = document.createElement('p');
+                parentNode.insertBefore(wrapper, node);
+                wrapper.appendChild(node);
+            }
+        };
+        var textNodes = [];
+        findTextNodesFlat(document.getElementsByClassName("content")[0], textNodes);
+        wrapTextNodes(textNodes);
+    </script>
+</body>
+
+</html>
